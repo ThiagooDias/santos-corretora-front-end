@@ -1,6 +1,7 @@
 import axios from "axios"
 
+const apiUrl = process.env.REACT_APP_API_URL
+
 export const API = axios.create({
-  //TODO: adicionar variavle de ambiente
-  baseURL: "http://localhost:3001"
+  baseURL: apiUrl
 })

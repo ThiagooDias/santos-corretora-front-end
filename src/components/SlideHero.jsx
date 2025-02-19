@@ -1,19 +1,21 @@
 import React from 'react'
+import { propertyTypeLabels } from '../locales/property-type'
 
-const SlideHero = ({ image }) => {
+const SlideHero = ({ image, type, price }) => {  
   return (
-    <div className='aspect-[4/3] overflow-hidden rounded-2xl shadow-lg'>
-      <img src={image} alt="" className="w-full h-full object-cover" />
+    <div className="relative aspect-[4/3] rounded-2xl shadow-lg transition-transform duration-300 group hover:-translate-y-3">
+      <img src={image} alt="" className="w-full h-full object-cover rounded-2xl" />
 
-      <div className='text-white text-2xl'>
-        <span className='font-semibold absolute bottom-11 left-1 rounded-md bg-primary px-4 py-2 shadow-lg'>
-          CASA
+      <div className="absolute inset-0 -left-7 flex justify-between items-end p-4 text-white text-sm 2xl:text-2xl">
+        <span className="font-bold rounded-md bg-primary px-4 py-2 shadow-lg transition-all duration-300 group-hover:-translate-y-3">
+          {propertyTypeLabels[type]}
         </span>
-        <span className='font-bold absolute bottom-11 right-10 rounded-md bg-[#388936] px-4 py-2 shadow-lg'>
-          R$ 190.000,00
+        <span className="font-bold rounded-md bg-[#388936] px-4 py-2 shadow-lg transition-all duration-300 group-hover:-translate-y-3">
+          R$ {price}
         </span>
       </div>
     </div>
+
   )
 }
 

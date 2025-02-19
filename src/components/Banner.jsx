@@ -12,55 +12,50 @@ import './../App.css';
 
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 
+
 const Banner = () => {
-  return (<div className=''>
-    <Swiper
-      slidesPerView={1.5}
-      centeredSlides={true}
-      //TODO: desativar o loop quando slides for menor q 4
-      loop={true} 
-      pagination={{
-        clickable: true,
-        renderBullet: (index, className) => `
+  const banners = [
+    { url: banner },
+    { url: banner },
+    { url: banner },
+  ]
+
+const loop = banners.length <= 3 ? false : true 
+
+  return (
+    <div className=''>
+      <Swiper
+        slidesPerView={1.25}
+        centeredSlides={true}
+        loop={loop}
+        pagination={{
+          clickable: true,
+          renderBullet: (index, className) => `
           <span class="${className} custom-bullet">
-            <div class="dashed-line"></div>
+            <div class="line"></div>
           </span>
         `,
-      }}
-      autoplay={{
-        delay: 4000,
-        disableOnInteraction: false,
-      }}
-      navigation={true}
-      modules={[Pagination, Navigation, Autoplay]}
-      className="banner-swiper"
-    >
-      <SwiperSlide>
-        <div className="flex justify-center">
-          <img src={banner} alt="banner" className="" />
-        </div>
-      </SwiperSlide>
+        }}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
+        navigation={true}
+        modules={[Pagination, Navigation, Autoplay]}
+        className="banner-swiper"
+      >
 
-      <SwiperSlide>
-        <div className="flex justify-center">
-          <img src={banner} alt="banner" className="" />
-        </div>
-      </SwiperSlide>
+        {banners.map(banner => (
+          <SwiperSlide>
+            <div className="flex justify-center object-cover">
+              <img src={banner.url} alt="banner" className="" />
+            </div>
+          </SwiperSlide>
+        ))}
 
-      <SwiperSlide>
-        <div className="flex justify-center">
-          <img src={banner} alt="banner" className="" />
-        </div>
-      </SwiperSlide>
+      </Swiper>
 
-      <SwiperSlide>
-        <div className="flex justify-center">
-          <img src={banner} alt="banner" className="" />
-        </div>
-      </SwiperSlide>
-    </Swiper>
-
-  </div>
+    </div>
   );
 }
 

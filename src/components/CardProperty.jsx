@@ -4,10 +4,15 @@ import garageIcon from '../assets/garage-icon.svg'
 import bedroomIcon from '../assets/bedroom-icon.svg'
 import bathroomIcon from '../assets/bathroom-icon.svg'
 import areaIcon from '../assets/area-icon.svg'
+import { propertyBusinessTypeLabels } from '../locales/property-business-type'
+import { propertyTypeLabels } from '../locales/property-type'
+import { useNavigate } from 'react-router-dom'
 
-const CardProperty = ({ title, price, type, businessType, address, image, garage, bedroom, bathroom, area }) => {
+const CardProperty = ({ title, price, type, businessType, address, image, garage, bedroom, bathroom, area, id }) => {
+  const navigate = useNavigate();
+
   return (
-    <div className='rounded-xl shadow-lg w-[350px] p-3 bg-white'>
+    <div className='rounded-xl shadow-lg w-[350px] p-3 bg-white cursor-pointer' onClick={() => navigate(`/imovel/${id}`)}>
       <div className='rounded-md overflow-hidden'>
         <img src={image} alt='' className="w-full h-full object-cover aspect-[4/3]" ></img>
       </div>
@@ -17,21 +22,23 @@ const CardProperty = ({ title, price, type, businessType, address, image, garage
       </h3>
 
       <div className='flex gap-3 my-3'>
-        <span className='bg-primary w-full text-center text-white font-semibold py-[5px] rounded-md'>{businessType}</span>
-        <span className='bg-secondary w-full text-center text-white font-semibold py-[5px] rounded-md'>{type}</span>
+        <span className='bg-primary w-full text-center text-white font-semibold py-[5px] rounded-md'>
+          {propertyBusinessTypeLabels[businessType]}
+        </span>
+        <span className='bg-secondary w-full text-center text-white font-semibold py-[5px] rounded-md'>
+          {propertyTypeLabels[type]}
+        </span>
       </div>
 
       <p className='my-4 text-secondary text-center font-bold text-3xl'>R$ {price}</p>
-      
+
       <div className='flex items-center gap-[5px] justify-center'>
         <img src={pin} alt='' className='h-5'></img>
         <span className='text-center text-sm line-clamp-1'>{address.street}, nº {address.number} - {address.neighborhood} - {address.city}</span>
       </div>
 
-
-
       <div className='mt-5 mb-2 text-xs flex justify-center gap-6'>
-        {(garage || garage === 0)  &&
+        {(garage || garage === 0) &&
           <div className='flex flex-col items-center gap-1'>
             <img src={garageIcon} alt=''></img>
             {garage === 1 ? (
@@ -41,7 +48,7 @@ const CardProperty = ({ title, price, type, businessType, address, image, garage
             )}
           </div>}
 
-        {(bathroom ||  bathroom === 0) &&
+        {(bathroom || bathroom === 0) &&
           <div className='flex flex-col items-center gap-1'>
             <img src={bathroomIcon} alt=''></img>
             {bathroom === 1 ? (
@@ -66,11 +73,7 @@ const CardProperty = ({ title, price, type, businessType, address, image, garage
             <img src={areaIcon} alt=''></img>
             <div><span className='font-semibold'>{area}</span> m²</div>
           </div>}
-
-
       </div>
-
-
     </div>
   )
 }

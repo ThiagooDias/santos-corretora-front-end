@@ -10,7 +10,11 @@ body {
   font-family: 'Sora', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f0fdf4;
+  background-color: #f1f5f9;
+}
+
+main {
+  margin: 0 !important;
 }
 
 .swiper {
@@ -42,6 +46,7 @@ body {
   opacity: 1;
   width: 700px;
   transition: transform 0.3s ease, opacity 0.3s ease;
+  filter: blur(0px);
 }
 
 .banner-swiper .swiper-slide-next,
@@ -81,18 +86,31 @@ body {
   position: relative;
 }
 
-.banner-swiper .custom-bullet .dashed-line {
+.banner-swiper .custom-bullet .line {
   height: 5px;
   width: 100px;
   background: transparent;
   border-top: 3px solid #ccc;
 }
 
-.banner-swiper .swiper-pagination-bullet-active .dashed-line {
+.banner-swiper .swiper-pagination-bullet-active .line {
   border-top: 3px solid #404040;
 }
 
 
 .hero-swiper .swiper-slide {
   background-color: transparent;
+}
+
+.underline-animation::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s ease-in-out;
+}
+
+.underline-animation:hover::after {
+  width: 100%;
 }

@@ -14,12 +14,22 @@ export const fetchProperties = async (filters = {}) => {
 };
 
 
-export const fetchPropertyById = async (id) => {
+export const fetchPublicPropertyById = async (id) => {
   try {
-    const response = await API.get(`/property/${id}/public`);
+    const response = await API.get(`/properties/public/${id}`);
     
     return response.data;
   } catch(error) {
       console.error(`Error fetching property by ID ${id}:`, error.message);
+  }
+};
+
+export const fetchLocations = async () => {
+  try {
+    const response = await API.get(`/properties/public/locations`);
+
+    return response.data;
+  } catch(error) {
+      console.error(`Error fetching plocations: `, error.message);
   }
 };

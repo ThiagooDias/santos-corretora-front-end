@@ -1,36 +1,33 @@
-import "./App.css";
-import CardProperty from "./components/CardProperty";
-import Header from "./components/Header"
-import Hero from "./components/Hero";
-import { useProperties } from "./hooks/useProperties";
-import casa from "./assets/casa.jpg"
-import SalesSection from "./components/SalesSection";
-import Footer from "./components/Footer";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import Details from "./pages/PropertyDetails";
+import AdminLayout from "./components/AdminLayout";
+import AdminProperties from "./pages/AdminOwner";
 
-function App() {
-  const {properties, loading} = useProperties()
-  
+export default function App() {
   return (
-    <>
-      <Header></Header>
+    <Router>
+      <Routes>
+        {/* Rotas públicas (landing page) */}
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="imovel/:id" element={<Details />} />
+        </Route>
 
-      <main className="bg-green-50">
-        <Hero></Hero> 
+        {/* Rotas do admin */}
+        {/* <Route path="/admin/login" element={<AdminLogin />} /> */}
+        <Route path="/admin" element={<AdminLayout />}>
 
-        <SalesSection></SalesSection>
+          <Route path="proprietarios" element={<AdminProperties />} />
+          {/* <Route path="proprietarios/novo" element={<AdminProperties />} /> */}
 
-        {/* <div className="flex gap-10">
-          <CardProperty title={'Casa espaçosa'} address={'Rua 102 Unidade 103, nº - Parque Ateneu - Paragominas-PA.'} businessType={'Venda'} type={'Apartamento'} image={casa} price={'R$ 300.000,00'}></CardProperty>
-
-          <CardProperty title={'Casa espaçosa com piscina'} address={'Rua 102 Unidade 103, nº - Parque Ateneu - Paragominas-PA.'} businessType={'Venda'} type={'Apartamento'} image={casa} price={'R$ 300.000,00'}></CardProperty>
-
-          <CardProperty title={'Casa espaçosa com piscinaaaaaaaaaaaaaaaaa'} address={'Rua 102 Unidade 103, nº - Parque Ateneu - Paragominas-PA.'} businessType={'Venda'} type={'Apartamento'} image={casa} price={'R$ 300.000,00'}></CardProperty>
-        </div>
-         */}
-      </main>
-      <Footer/>
-    </>
+          {/* <Route index path="imoveis" element={<AdminProperties />} /> */}
+          {/* <Route path="imoveis/:id" element={<AdminProperties />} /> */}
+          {/* <Route path="imoveis/novo" element={<AdminProperties />} /> */}
+          {/* <Route path="configuracoes" element={<AdminProperties />} /> */}
+        </Route>
+      </Routes>
+    </Router>
   );
 }
-
-export default App;
