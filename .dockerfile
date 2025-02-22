@@ -20,7 +20,7 @@ RUN npm run build
 RUN npm install -g serve 
 
 # Define a porta que será usada
-EXPOSE 80
+EXPOSE 8080
 
 # Comando para rodar o React
 CMD ["serve", "-s", "build", "-l", "80"]
