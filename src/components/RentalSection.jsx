@@ -1,22 +1,27 @@
-import React from 'react'
-import { useProperties } from '../hooks/useProperties'
-import CardProperty from './CardProperty'
+import React from "react";
+import { useProperties } from "../hooks/useProperties";
+import CardProperty from "./CardProperty";
 
 const RentalSection = () => {
-  const { properties, loading, error } = useProperties({ limit: 6, type: 'house', businessType: 'rent' })
+  const { properties, loading, error } = useProperties({
+    limit: 6,
+    type: "house",
+    businessType: "rent",
+  });
   return (
-    <section className='p-10 flex flex-col items-center'>
-      <h2 className='text-center font-semibold text-4xl mb-5'>Casas para alugar</h2>
+    <section className="p-10 flex flex-col items-center">
+      <h2 className="text-center font-semibold text-4xl mb-5">
+        Casas para alugar
+      </h2>
 
-      <div className='grid grid-cols-3 place-items-center gap-10'>
+      <div className="grid grid-cols-3 place-items-center gap-10">
         {properties.map((property, index) => (
-
           <CardProperty
             key={index}
             id={property?._id}
             title={property?.title}
             address={property?.address}
-            image={property?.images[0].url}
+            image={property?.images.length > 0 ? property?.images[0]?.url : ""}
             businessType={property?.businessType}
             price={property?.price}
             type={property?.type}
@@ -28,7 +33,7 @@ const RentalSection = () => {
         ))}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default RentalSection
+export default RentalSection;

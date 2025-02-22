@@ -16,7 +16,7 @@ const SalesSection = () => {
             id={property?._id}
             title={property?.title}
             address={property?.address}
-            image={property?.images[0].url}
+            image={property?.images.length > 0 ? property?.images[0]?.url : ""}
             businessType={property?.businessType}
             price={property?.price}
             type={property?.type}
