@@ -7,6 +7,8 @@ export const fetchProperties = async (filters = {}) => {
     
     const response = await API.get(`/properties/public?${queryParams}`);
     console.log(response);
+    console.log(response.data);    
+    
     return response.data;
   } catch (error) {
     console.error("Error fetching Properties:", error.message);
