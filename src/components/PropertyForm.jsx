@@ -60,8 +60,12 @@ const PropertyForm = ({ onSubmit }) => {
     },
   });
 
+  const [location, setLocation] = useState(null);
   const [estados, setEstados] = useState([]);
   const [cidades, setCidades] = useState([]);
+
+  console.log(location);
+  
 
   const estadoSelecionado = watch("address.state");
 
@@ -107,7 +111,7 @@ const PropertyForm = ({ onSubmit }) => {
 
         <h2 className="text-xl font-bold mt-4 col-span-full">Endereço</h2>
 
-        <div className="flex">
+        <div className="flex col-span-full justify-between">
           <div className="max-w-24">
             <label className="block text-sm font-medium">Estado</label>
             <select
@@ -172,7 +176,7 @@ const PropertyForm = ({ onSubmit }) => {
           />
         </div>
 
-        <MapPicker className={'col-span-full'}/>
+        <MapPicker className={'col-span-full'}  onLocationSelect={setLocation} />
 
         <InputField
           label="Preço"

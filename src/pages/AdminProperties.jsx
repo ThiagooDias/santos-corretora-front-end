@@ -26,9 +26,6 @@ const AdminProperties = () => {
     navigate(`/admin/imoveis/novo`);
   };
 
-  console.log(properties[0]?.images[0]?.url)
-
-
   return (
     <div className="w-full mx-auto bg-white shadow-md rounded-lg p-6 space-y-4">
       <div className="flex justify-between items-center mb-6">

@@ -19,7 +19,6 @@ const PropertyItem = ({
   bathroom,
   area,
 }) => {
-  console.log('img', img);
   
   return (
     <div className="flex bg-gray-100 p-4 rounded-lg shadow-md">
