@@ -1,0 +1,18 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '--build-arg'
+      - 'REACT_APP_API_URL=$_REACT_APP_API_URL'
+      - '--build-arg'
+      - 'REACT_APP_API_KEY_MAPS=$_REACT_APP_API_KEY_MAPS'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/my-service'
+      - '.'
+
+images:
+  - 'gcr.io/$PROJECT_ID/my-service'
+
+substitutions:
+  _REACT_APP_API_URL: "https://santos-corretora-98216521041.us-central1.run.app"
+  _REACT_APP_API_KEY_MAPS: "AIzaSyDfxjGDgeEMGuGZJ6oy2nN6b6BjHurFVDQ"
