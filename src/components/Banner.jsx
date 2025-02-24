@@ -18,6 +18,7 @@ const Banner = () => {
     { url: banner },
     { url: banner },
     { url: banner },
+    { url: banner },
   ]
 
 const loop = banners.length <= 3 ? false : true 
