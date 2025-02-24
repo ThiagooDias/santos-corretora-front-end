@@ -30,7 +30,7 @@ const PropertyItem = ({
           <p className="text-gray-500">{formatAddress(address)}</p>
         </div>
 
-        <p className="text-secondary text-center font-black text-3xl self-start place-self-end">
+        <p className="text-[#333] text-center font-black text-2xl self-start place-self-end">
           R$ {price}
         </p>
 
